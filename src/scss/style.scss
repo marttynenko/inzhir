@@ -66,3 +66,295 @@ body {
   padding-left: $paddingContainer;
   padding-right: $paddingContainer;
 }
+
+
+.login {
+  position: relative;
+  background: #F4F5F6;
+  height: 100%;
+  @media(max-width:1024px) {
+      display: none;
+  }
+  &-img {
+    background-image: url(../images/bg/bg-login.svg);
+    height: 100%;
+    background-position: center -122px;
+    background-repeat: no-repeat;
+  }
+}
+
+.ui-field {
+  margin-bottom: 4px;
+  label {
+    display: block;
+    font-size: rem(13px);
+    font-weight: 500;
+    color: silver;
+    margin-bottom: 13px;
+  }
+  span.error {
+    display: block;
+    // margin-top: 10px;
+    font-size: rem(12px);
+    color: #FF4E4E;
+    line-height: 23px;
+  }
+  &-input {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 0px 20px ;
+    font-family: $baseFont;
+    font-weight: 500;
+    height: 48px;
+    color: #000;
+    &::placeholder {
+      color: #9B9B9B;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid #adb2c0;
+    }
+    &.error {
+      &::placeholder {
+        color: #FF4E4E;
+      }
+      border: 1px solid #FF4E4E;
+    }
+    &-document {
+      height: 66px;
+    }
+    &-textarea {
+      height: 84px;
+      resize: none;
+      padding: 15px 16px;
+    }
+
+  }
+  &-password {
+    position: relative;
+    &-eye {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 17px;
+      top:17px;
+      background-image: url(../images/icon/eye-password.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+    }
+  }
+  &-inn {
+    margin-bottom: 15px;
+  }
+  &-textarea {
+    margin-bottom: 40px;
+  }
+  &-document {
+    margin-bottom: 24px;
+
+  }
+}
+.input-eye {
+  padding-right: 52px;
+}
+// Класс для смены иконки "глазик" в поле - пароль
+.password-eye-see {
+  background-image: url(../images/icon/eye-password-see.svg);
+}
+// Кастомный стиль для ошибки ИНН 
+.inn-occupied {
+  font-weight: 500;
+  font-size: 13px;
+  color: #000;
+  a {
+    color: #FF4E4E;
+  }
+}
+.required-field {
+  color: #FF4E4E;
+  font-weight: 600;
+}
+// custom checkbox style
+.registration-footer-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  &-link {
+    color: #0029FF;
+  }
+}
+.registration-footer-checkbox+label {
+  // display: inline-flex;
+  // align-items: center;
+  // padding-left: 40px;
+  user-select: none;
+  cursor: pointer;
+  @media(max-width:450px) {
+      // align-items: flex-start;
+  }
+}
+.registration-footer-checkbox+label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 4px;
+  margin-right: 9px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.registration-footer-checkbox:checked+label::before {
+  border-color: #06B966;
+  background-color: #06B966;
+  background-image: url(../images/icon/Vector.svg);
+}
+
+.registration-footer-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+
+.registration {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 40px 0px;
+  &-ty {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+     @media(max-width:400px) {
+            height: auto;
+        }
+  }
+  &-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+      font-weight: 400;
+      font-size: rem(32px);
+      margin-bottom: 40px;
+      color: #000;
+      @media(max-width:400px) {
+        text-align: left;
+          margin-bottom: 30px;
+      }
+  }
+  &-text {
+    margin-bottom: 24px;
+    ol {
+      padding-left: 20px;
+      li {
+        margin-bottom: 5px;
+        list-style: auto;
+      }
+    }
+  }
+  &-addcontent {
+    display: block;
+    background: #fff;
+    border: none;
+    color: #0029FF;
+    font-size: rem(14);
+    padding: 0;
+  }
+  &-btn {
+     border: none;
+     width: 100%;
+    //  max-width: 397px;
+     padding: 0px 20px;
+     line-height: 56px;
+     height: 56px;
+     text-align: center;
+     font-size: rem(16px); 
+     color: #fff;
+     background: linear-gradient(90deg, #E64A70 0%, #B44AE6 102.15%);
+     border-radius: 12px;
+     cursor: pointer;
+     transition: 0.3s ease;
+     &:hover {
+         background: linear-gradient(90deg, #101010 0%, #101010 102.15%);
+     }
+     &-disabled {
+         opacity: 0.5;
+         box-shadow: none;
+         cursor: auto;
+         &:hover {
+          background: #B8BABF;
+         }
+     }
+     &-back {
+      display: block;
+       width: 100%;
+       padding: 0px 20px;
+       line-height: 56px;
+       border-radius: 12px;
+       margin-bottom: 8px;
+       cursor: pointer;
+       transition: 0.3s ease;
+       height: 56px;
+       text-align: center;
+       font-size: rem(16px); 
+       background: #fff;
+       border: 1px solid #000;
+       &:hover {
+        color: #fff;
+        background: #000;
+       }
+     }
+  }
+  &-footer {
+      &-info {
+          font-size: rem(13px);
+          color: #777E90;
+          margin-bottom: 30px;
+      }
+      &-check {
+        position: relative;
+        padding-left: 40px;
+
+          margin-bottom: 25px;
+          font-size: rem(13px);
+          color: silver;
+          font-weight: 500;
+          span.error {
+            position: absolute;
+            bottom: -20px;
+            left: 40px;
+            display: block;
+            // margin-top: 10px;
+            font-size: rem(12px);
+            color: #FF4E4E;
+            line-height: 23px;
+          }
+      }
+  }
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  &:hover {
+    background: linear-gradient(90deg, #E64A70 0%, #B44AE6 102.15%);
+
+
+  }
+}
+
+.ui-mb-8 {
+  margin-bottom: 8px;
+}
+.ui-mb-16 {
+  margin-bottom: 16px;
+}
+.ui-mb-40 {
+  margin-bottom: 40px;
+}
