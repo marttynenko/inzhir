@@ -164,7 +164,7 @@ body {
 .password-eye-see {
   background-image: url(../images/icon/eye-password-see.svg);
 }
-// Кастомный стиль для ошибки ИНН 
+// Кастомный стиль для ошибки ИНН
 .inn-occupied {
   font-weight: 500;
   font-size: 13px;
@@ -180,8 +180,11 @@ body {
 // custom checkbox style
 .registration-footer-checkbox {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   opacity: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
   &-link {
     color: #0029FF;
   }
@@ -268,6 +271,7 @@ body {
     padding: 0;
   }
   &-btn {
+    position: relative;
      border: none;
      width: 100%;
     //  max-width: 397px;
@@ -275,7 +279,7 @@ body {
      line-height: 56px;
      height: 56px;
      text-align: center;
-     font-size: rem(16px); 
+     font-size: rem(16px);
      color: #fff;
      background: linear-gradient(90deg, #E64A70 0%, #B44AE6 102.15%);
      border-radius: 12px;
@@ -303,7 +307,7 @@ body {
        transition: 0.3s ease;
        height: 56px;
        text-align: center;
-       font-size: rem(16px); 
+       font-size: rem(16px);
        background: #fff;
        border: 1px solid #000;
        &:hover {
@@ -357,4 +361,17 @@ body {
 }
 .ui-mb-40 {
   margin-bottom: 40px;
+}
+
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+}
+
+.test {
+  position: relative;
 }

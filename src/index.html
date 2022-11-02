@@ -1,22 +1,22 @@
 <!--#include file="inc-header.html"-->
 <div class="middle" id="middle">
   <div class="container">
-   
+
         <div class="registration">
           <div class="registration-title">Введите данные</div>
           <div class="registration-text">Ваши персональные данные нужны для заполнения договора, чтобы участвовать в проекте Inzhir</div>
           <form id="registration-form">
-           
-             
+
+
                 <div class="ui-field">
                   <input type="text" name="name" id="name" class="ui-field-input" placeholder="Имя">
                 </div>
-             
-           
+
+
                 <div class="ui-field">
                   <input type="text" name="secondname" id="secondname" class="ui-field-input" placeholder="Фамилия">
                 </div>
-              
+
                 <div class="ui-field">
                   <input type="text" name="date" id="date" class="ui-field-input" placeholder="Дата рождения">
                 </div>
@@ -36,24 +36,27 @@
                 <div class="ui-field ui-field-textarea">
                   <textarea name="text" id="text" class="ui-field-input ui-field-input-textarea" placeholder="Напишите свои заболевания, если есть. Это поможет кураторам работать с вами более индивидуально"></textarea>
                 </div>
-             
-           
+
+
             <div class="registration-footer">
               <div class="registration-footer-check">
                 <input type="checkbox" class="registration-footer-checkbox" id="checkbox" name="checkbox" value="true">
                 <label for="checkbox"><span class="registration-footer-checkbox-span">Согласен и подписываю <a href="#" class="registration-footer-checkbox-link">соглашение на обработку и передачу персональных данных</a></span></label>
               </div>
-              <button type="submit" class="registration-btn" id="register">
-                Дальше
-              </button>
+              <div class="test" id="test">
+                <div id="overlay"></div>
+                <button type="submit" class="registration-btn" id="register" disabled>
+                  Дальше
+                </button>
+              </div>
 
             </div>
           </form>
         </div>
-    
-     
-   
+
+
+
   </div>
-  
+
 </div>
 <!--#include file="inc-footer.html"-->

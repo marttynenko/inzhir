@@ -50,8 +50,8 @@ $(document).ready(function () {
                required: true,
                // number: true,
               }
-    
-    
+
+
            },
            messages: {
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
             //    required: "asdasd",
             // },
 
-    
+
          },
          submitHandler: function(form) { // <- pass 'form' argument in
             $(".registration-btn").attr("disabled", true);
@@ -110,7 +110,7 @@ $(document).ready(function () {
             },
             "Incorrect format"
           );
-          
+
         jQuery.validator.addMethod(
             "telephone",
             function (value, element) {
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
 
    let documentInput = document.getElementById('document');
-   let phoneInput = document.getElementById('phone');     
+   let phoneInput = document.getElementById('phone');
     // Маска для даты
     if(documentInput) {
       var element = document.getElementById('date');
@@ -135,7 +135,7 @@ $(document).ready(function () {
       };
       var mask = IMask(element, maskOptions);
     }
-         
+
     // Маска для телеофона
     if(phoneInput) {
       var phone = document.getElementById('phone');
@@ -143,51 +143,103 @@ $(document).ready(function () {
          placeholder: '+{7}(000)000-00-00',
          mask: '+{7}(000)000-00-00'
       };
-      var mask = IMask(phone, maskOptions); 
-    }      
-   // проверка 
-   (function() {
-      let emptyInput = false;
-      let emptyTextarea = false;
-      let emptyCheckbox = false;
-    
-      $('form').on('keyup change', function() {
-        $('form * input').each(function() {
-          if($(this).val() == '') {
-            emptyInput = true;
-          }
-        });
-    
-        $('form * textarea').each(function() {
-          if($(this).val() == '') {
-            emptyTextarea = true;
-          }
-        });
-    
-        console.log(emptyTextarea)
-    
-        $('form * input[type="checkbox"]').each(function() {
-          if($(this).val() == "true") {
-            emptyCheckbox = true;
-          } else {
-            emptyCheckbox = false
-          }
-        });
-      //   console.log(emptyCheckbox)
-    
-        // if(!emptyInput && !emptyTextarea) {
-        //   $('#register').removeClass('btn-disabled');
-        //   $('#register').removeAttr('disabled');
-        // } else {
-        //   $('#register').addClass('btn-disabled');
-        //   $('#register').attr('disabled', 'disabled');
-        // }
-      });
-    })();
-  
-     
+      var mask = IMask(phone, maskOptions);
+    }
 
-  
-      
+   let emptyInput = true;
+   let emptyTextarea = true;
+   let emptyCheckbox = true;
+
+    $('form * input').keyup(() => {
+      $('form * input').each(function() {
+         if($(this).val() !== '') {
+            return emptyInput = false;
+         }
+      });
+    })
+
+    $('form * textarea').keyup(() => {
+     $('form * textarea').each(function() {
+         if($(this).val() === '') {
+            return emptyTextarea = true;
+         } else {
+            return emptyTextarea = false;
+         }
+      });
+    })
+
+    $('form * input[type="checkbox"]').change(() => {
+      $('input[type="checkbox"]').each(function(index) {
+         if($(this).val() === "true") {
+            $(this).val(false)
+            return emptyCheckbox = false;
+         } else if($(this).val() === "false") {
+            $(this).val(true)
+            return emptyCheckbox = true;
+         }
+      });
+    })
+
+    $('#test').mouseenter(() => {
+      console.log(emptyInput)
+      if(emptyInput) {
+         $('#overlay').css('z-index', 999999);
+         setTimeout(() => {
+            $('#register').attr('disabled', 'disabled');
+         }, 0)
+      } else {
+         $('#overlay').css('z-index', -1);
+         setTimeout(() => {
+            $('#register').removeAttr('disabled');
+         }, 0)
+      }
+    })
+
+   //  $(document).on('keyup change', function(e) {
+   //    let emptyInput = false;
+   //    let emptyTextarea = false;
+   //    let emptyCheckbox = false;
+
+
+   //    $('form * input').each(function() {
+   //       if($(this).val() === '') {
+   //          emptyInput = true;
+   //       }
+   //    });
+
+   //    $('form * textarea').each(function() {
+   //       if($(this).val() === '') {
+   //          emptyTextarea = true;
+   //       }
+   //    });
+
+   //    $('input[type="checkbox"]').each(function(index) {
+   //       if(e.target === $(this)[index]) {
+   //    console.log('asdasd')
+
+   //          if($(this).val() === "false") {
+   //             emptyCheckbox = true;
+   //             $(this).val(true)
+   //          } else if($(this).val() === "true") {
+   //             emptyCheckbox = false;
+   //             $(this).val(false)
+   //          }
+   //       }
+   //    });
+
+
+   //    console.log(emptyInput)
+
+   //    if(emptyInput) {
+   //       console.log('zxc')
+   //       setTimeout(() => {
+   //          $('#register').attr('disabled', 'disabled');
+   //       }, 0)
+   //    } else {
+   //       console.log('aaaa')
+   //       setTimeout(() => {
+   //          $('#register').removeAttr('disabled');
+   //       }, 0)
+   //    }
+   //  });
 });
-    
