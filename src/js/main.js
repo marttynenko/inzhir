@@ -1,6 +1,8 @@
 $(document).ready(function () {
     // Валидация формы
-        $("#registration-form").validate({
+       let formvalidate =  $("#registration-form").validate({
+         //   validateOnKeyPress: true,
+         //   validateOnClick: true,
            errorElement: 'span',
            errorPlacement: function (error, element) {
               if (element.attr("type") == "checkbox") {
@@ -97,11 +99,28 @@ $(document).ready(function () {
             // },
 
     
-         },
-         submitHandler: function(form) { // <- pass 'form' argument in
-            $(".registration-btn").attr("disabled", true);
-            form.submit(); // <- use 'form' argument here.
-        }
+           },
+         //   onComplete: function (form,event) {
+         //       console.log('asd')
+         //    },
+         //   submitHandler: function(form) { 
+         //    $(form).change(function() {
+         //       console.log('asd')
+         //    })
+         //       //  if ($("#registration-form").valid()) {
+         //       //    $("#submit").addClass("next");
+         //       // } else {
+         //       //       $("#submit").removeClass("next");
+         //       // }
+            
+              
+         // }, 
+         // invalidHandler: function (form, validator) {
+
+         //    form.change(function() {
+         //       console.log('asd')
+         //    })
+         //  },
         });
         jQuery.validator.addMethod(
             "lettersonly",
@@ -146,44 +165,44 @@ $(document).ready(function () {
       var mask = IMask(phone, maskOptions); 
     }      
    // проверка 
-   (function() {
-      let emptyInput = false;
-      let emptyTextarea = false;
-      let emptyCheckbox = false;
+   // (function() {
+   //    let emptyInput = false;
+   //    let emptyTextarea = false;
+   //    let emptyCheckbox = false;
     
-      $('form').on('keyup change', function() {
-        $('form * input').each(function() {
-          if($(this).val() == '') {
-            emptyInput = true;
-          }
-        });
+   //    $('form').on('keyup change', function() {
+   //      $('form * input').each(function() {
+   //        if($(this).val() == '') {
+   //          emptyInput = true;
+   //        }
+   //      });
     
-        $('form * textarea').each(function() {
-          if($(this).val() == '') {
-            emptyTextarea = true;
-          }
-        });
+   //      $('form * textarea').each(function() {
+   //        if($(this).val() == '') {
+   //          emptyTextarea = true;
+   //        }
+   //      });
     
-        console.log(emptyTextarea)
+   //      console.log(emptyTextarea)
     
-        $('form * input[type="checkbox"]').each(function() {
-          if($(this).val() == "true") {
-            emptyCheckbox = true;
-          } else {
-            emptyCheckbox = false
-          }
-        });
-      //   console.log(emptyCheckbox)
+   //      $('form * input[type="checkbox"]').each(function() {
+   //        if($(this).val() == "true") {
+   //          emptyCheckbox = true;
+   //        } else {
+   //          emptyCheckbox = false
+   //        }
+   //      });
+   //    //   console.log(emptyCheckbox)
     
-        // if(!emptyInput && !emptyTextarea) {
-        //   $('#register').removeClass('btn-disabled');
-        //   $('#register').removeAttr('disabled');
-        // } else {
-        //   $('#register').addClass('btn-disabled');
-        //   $('#register').attr('disabled', 'disabled');
-        // }
-      });
-    })();
+   //      // if(!emptyInput && !emptyTextarea) {
+   //      //   $('#register').removeClass('btn-disabled');
+   //      //   $('#register').removeAttr('disabled');
+   //      // } else {
+   //      //   $('#register').addClass('btn-disabled');
+   //      //   $('#register').attr('disabled', 'disabled');
+   //      // }
+   //    });
+   //  })();
   
      
 
@@ -191,3 +210,5 @@ $(document).ready(function () {
       
 });
     
+
+
