@@ -146,29 +146,11 @@ $(document).ready(function () {
       var mask = IMask(phone, maskOptions);
     }
 
-   let emptyInput = true;
-   let emptyTextarea = true;
+   let emptyInput;
+   let emptyTextarea;
    let emptyCheckbox = true;
 
-    $('form * input').keyup(() => {
-      $('form * input').each(function() {
-         if($(this).val() !== '') {
-            return emptyInput = false;
-         }
-      });
-    })
-
-    $('form * textarea').keyup(() => {
-     $('form * textarea').each(function() {
-         if($(this).val() === '') {
-            return emptyTextarea = true;
-         } else {
-            return emptyTextarea = false;
-         }
-      });
-    })
-
-    $('form * input[type="checkbox"]').change(() => {
+   $('form * input[type="checkbox"]').change(() => {
       $('input[type="checkbox"]').each(function(index) {
          if($(this).val() === "true") {
             $(this).val(false)
@@ -178,68 +160,32 @@ $(document).ready(function () {
             return emptyCheckbox = true;
          }
       });
-    })
+   })
 
-    $('#test').mouseenter(() => {
-      console.log(emptyInput)
-      if(emptyInput) {
+   $(document).on('keyup mouseenter', function(e) {
+      emptyInput = false;
+      emptyTextarea = false;
+
+      $('form * input').each(function() {
+         if($(this).val() === '') {
+            return emptyInput = true;
+         }
+      });
+
+      $('form * textarea').each(function() {
+         if($(this).val() === '') {
+            return emptyTextarea = true;
+         }
+      });
+   });
+
+   $('#overlay-dis').mouseenter(() => {
+      if(emptyCheckbox || emptyInput || emptyTextarea) {
          $('#overlay').css('z-index', 999999);
-         setTimeout(() => {
-            $('#register').attr('disabled', 'disabled');
-         }, 0)
+         $('#register').attr('disabled', 'disabled');
       } else {
          $('#overlay').css('z-index', -1);
-         setTimeout(() => {
-            $('#register').removeAttr('disabled');
-         }, 0)
+         $('#register').removeAttr('disabled');
       }
     })
-
-   //  $(document).on('keyup change', function(e) {
-   //    let emptyInput = false;
-   //    let emptyTextarea = false;
-   //    let emptyCheckbox = false;
-
-
-   //    $('form * input').each(function() {
-   //       if($(this).val() === '') {
-   //          emptyInput = true;
-   //       }
-   //    });
-
-   //    $('form * textarea').each(function() {
-   //       if($(this).val() === '') {
-   //          emptyTextarea = true;
-   //       }
-   //    });
-
-   //    $('input[type="checkbox"]').each(function(index) {
-   //       if(e.target === $(this)[index]) {
-   //    console.log('asdasd')
-
-   //          if($(this).val() === "false") {
-   //             emptyCheckbox = true;
-   //             $(this).val(true)
-   //          } else if($(this).val() === "true") {
-   //             emptyCheckbox = false;
-   //             $(this).val(false)
-   //          }
-   //       }
-   //    });
-
-
-   //    console.log(emptyInput)
-
-   //    if(emptyInput) {
-   //       console.log('zxc')
-   //       setTimeout(() => {
-   //          $('#register').attr('disabled', 'disabled');
-   //       }, 0)
-   //    } else {
-   //       console.log('aaaa')
-   //       setTimeout(() => {
-   //          $('#register').removeAttr('disabled');
-   //       }, 0)
-   //    }
-   //  });
 });
