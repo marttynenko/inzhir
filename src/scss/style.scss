@@ -59,6 +59,11 @@ body {
   -webkit-box-flex: 0;
 }
 
+// .wrapper {
+//   // height: 100vh; 
+//   height: calc(var(--vh, 1vh) * 100);
+// }
+
 .container {
   margin: 0 auto;
   width: 100%;
@@ -151,6 +156,9 @@ body {
   }
   &-textarea {
     margin-bottom: 40px;
+     @media(max-width:576px) {
+            margin-bottom: 0;
+        }
   }
   &-document {
     margin-bottom: 24px;
@@ -183,8 +191,9 @@ body {
   z-index: 1;
   opacity: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
   &-link {
     color: #0029FF;
   }
@@ -205,20 +214,21 @@ body {
   left: 0;
   display: inline-block;
   vertical-align: bottom;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
   flex-grow: 0;
-  border: 1px solid #adb5bd;
+  border: 1px solid #000;
   border-radius: 4px;
   margin-right: 9px;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .registration-footer-checkbox:checked+label::before {
-  border-color: #06B966;
-  background-color: #06B966;
-  background-image: url(../images/icon/Vector.svg);
+  border-color: #0029ff;
+  background-color: #0029ff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  background-size: 10px;
 }
 
 .registration-footer-checkbox:not(:disabled):not(:checked)+label:hover::before {
@@ -228,7 +238,6 @@ body {
 .registration {
   max-width: 460px;
   margin: 0 auto;
-  padding: 40px 0px;
   &-ty {
     display: flex;
     flex-direction: column;
@@ -325,10 +334,9 @@ body {
       &-check {
         position: relative;
         padding-left: 40px;
-
           margin-bottom: 25px;
           font-size: rem(13px);
-          color: silver;
+          color: #000;
           font-weight: 500;
           span.error {
             position: absolute;
@@ -362,16 +370,60 @@ body {
 .ui-mb-40 {
   margin-bottom: 40px;
 }
+//  @media(max-height: 500px) {
+//       .registration {
+//         background-color: red;
+//       }
+//     }
+ @media(max-width:1024px) {
+  .registration {
+    // max-height:  calc((var(--vh, 1vh) * 100) + 120px);
+    padding: 40px 0px;
 
-#overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999999;
-}
+  }
+        .registration-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 40px;
+          min-height: calc(100vh - 80px);
+          min-height:  calc((var(--vh, 1vh) * 100) - 80px);
 
-.overlay-dis {
-  position: relative;
-}
+          // overflow-y: auto;
+        }
+    }
+//  @media(max-width:576px) {
+//   .registration-wrap {
+  
+//     &-main {
+//       height: 100vh;
+//       height: calc((var(--vh, 1vh) * 100) - var(--header) - var(--footer) - 80px);
+//       overflow-y: auto;
+//        @media(max-width:576px) {
+//       height: calc((var(--vh, 1vh) * 100) - var(--header) - var(--footer) - 120px);
+              
+//           }
+//     }
+//   }
+//   .registration-wrap-fixed {
+//     position: fixed;
+//     width: 100%;
+//     bottom: 0;
+//     left: 0;
+//     background: #fff;
+//     padding-left: $paddingContainer;
+//     padding-right: $paddingContainer;
+//   }
+//   .registration-container {
+//       max-width: 460px;
+//       margin: 0 auto;
+//       padding: 40px 0px;
+     
+//   }
+//   .registration-form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+   
+//   }
+//     }

@@ -3,59 +3,71 @@
   <div class="container">
 
         <div class="registration">
-          <div class="registration-title">Введите данные</div>
-          <div class="registration-text">Ваши персональные данные нужны для заполнения договора, чтобы участвовать в проекте Inzhir</div>
-          <form id="registration-form">
-
-
+          <form id="registration-form" class="registration-form">
+            <div class="registration-wrap">
+              <div class="registration-wrap-header">
+                <div class="registration-title">Введите данные</div>
+                <div class="registration-text">Ваши персональные данные нужны для заполнения договора, чтобы участвовать в проекте Inzhir</div>
+              </div>
+              <div class="registration-wrap-main">
+             
+  
+  
                 <div class="ui-field">
                   <input type="text" name="name" id="name" class="ui-field-input" placeholder="Имя">
                 </div>
-
-
+  
+  
                 <div class="ui-field">
                   <input type="text" name="secondname" id="secondname" class="ui-field-input" placeholder="Фамилия">
                 </div>
-
+  
                 <div class="ui-field">
                   <input type="text" name="date" id="date" class="ui-field-input" placeholder="Дата рождения">
                 </div>
-
+  
                 <div class="ui-field">
                   <input type="text" name="city" id="city" class="ui-field-input" placeholder="Страна фактического нахождения">
                 </div>
-
+  
                 <div class="ui-field">
                   <input type="text" name="adress" id="adress" class="ui-field-input" placeholder="Адрес прописки">
                 </div>
-
+  
                 <div class="ui-field ui-field-document">
                   <input type="text" name="document" id="document" class="ui-field-input ui-field-input-document" placeholder="Номер документа, удостоверящего личность">
                 </div>
-
+  
                 <div class="ui-field ui-field-textarea">
                   <textarea name="text" id="text" class="ui-field-input ui-field-input-textarea" placeholder="Напишите свои заболевания, если есть. Это поможет кураторам работать с вами более индивидуально"></textarea>
                 </div>
-
-
-            <div class="registration-footer">
-              <div class="registration-footer-check">
-                <input type="checkbox" class="registration-footer-checkbox" id="checkbox" name="checkbox" value="true">
-                <label for="checkbox"><span class="registration-footer-checkbox-span">Согласен и подписываю <a href="#" class="registration-footer-checkbox-link">соглашение на обработку и передачу персональных данных</a></span></label>
               </div>
-              <div class="overlay-dis" id="overlay-dis">
-                <div id="overlay"></div>
-                <button type="submit" class="registration-btn" id="register" disabled>
-                  Дальше
-                </button>
-              </div>
-
+             
             </div>
-          </form>
+               
+            <div class="registration-wrap-fixed">
+              <div class="registration-container">
+                <div class="registration-footer">
+                  <div class="registration-footer-check">
+                    <input type="checkbox" class="registration-footer-checkbox" id="checkbox" name="checkbox" value="true">
+                    <label for="checkbox"><span class="registration-footer-checkbox-span">Согласен и подписываю <a href="#" class="registration-footer-checkbox-link">соглашение на обработку и передачу персональных данных</a></span></label>
+                  </div>
+  
+  
+                  <button type="submit" class="registration-btn btn-disabled" id="submit" disabled>
+                    Дальше
+                  </button>
+  
+  
+                </div>
+              </div>
+              
+            </div>      
+          
         </div>
 
 
-
+      </form>
   </div>
 
 </div>
