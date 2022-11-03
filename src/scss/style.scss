@@ -121,15 +121,16 @@ body {
       outline: none;
       border: 1px solid #adb2c0;
     }
+    &:hover {
+      border: 1px solid #adb2c0;
+    }
     &.error {
       &::placeholder {
         color: #FF4E4E;
       }
       border: 1px solid #FF4E4E;
     }
-    &-document {
-      height: 66px;
-    }
+
     &-textarea {
       height: 84px;
       resize: none;
@@ -199,14 +200,8 @@ body {
   }
 }
 .registration-footer-checkbox+label {
-  // display: inline-flex;
-  // align-items: center;
-  // padding-left: 40px;
   user-select: none;
   cursor: pointer;
-  @media(max-width:450px) {
-      // align-items: flex-start;
-  }
 }
 .registration-footer-checkbox+label::before {
   content: '';
@@ -333,7 +328,7 @@ body {
       }
       &-check {
         position: relative;
-        padding-left: 40px;
+        padding-left: 27px;
           margin-bottom: 25px;
           font-size: rem(13px);
           color: #000;
@@ -341,9 +336,8 @@ body {
           span.error {
             position: absolute;
             bottom: -20px;
-            left: 40px;
+            left: 27px;
             display: block;
-            // margin-top: 10px;
             font-size: rem(12px);
             color: #FF4E4E;
             line-height: 23px;
@@ -356,8 +350,6 @@ body {
   opacity: 0.5;
   &:hover {
     background: linear-gradient(90deg, #E64A70 0%, #B44AE6 102.15%);
-
-
   }
 }
 
@@ -375,11 +367,23 @@ body {
 //         background-color: red;
 //       }
 //     }
+ @media(min-width: 1024px) {
+  .registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height:  calc(var(--vh, 1vh) * 100);
+    padding: 40px 0px;
+  }
+}
+
+.registration-form {
+  width: 100%;
+}
  @media(max-width:1024px) {
   .registration {
-    // max-height:  calc((var(--vh, 1vh) * 100) + 120px);
     padding: 40px 0px;
-
   }
         .registration-form {
           display: flex;
