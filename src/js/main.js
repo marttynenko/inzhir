@@ -1,26 +1,18 @@
 
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
-let regHeader = document.querySelector('.registration-wrap-header').clientHeight
-let regFooter = document.querySelector('.registration-wrap-fixed').clientHeight
-let reg = document.querySelector('.registration').clientHeight
-let regForm = document.querySelector('.registration-form')
+
 
 
 
 
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
-document.documentElement.style.setProperty('--header', `${regHeader}px`);
-document.documentElement.style.setProperty('--footer', `${regFooter}px`);
+
 
 window.addEventListener('resize', () => {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
-  document.documentElement.style.setProperty('--header', `${regHeader}px`);
-  document.documentElement.style.setProperty('--footer', `${regFooter}px`);
-
-
 });
 
 $(document).ready(function () {

@@ -392,42 +392,10 @@ body {
           gap: 40px;
           min-height: calc(100vh - 80px);
           min-height:  calc((var(--vh, 1vh) * 100) - 80px);
-
-          // overflow-y: auto;
         }
     }
-//  @media(max-width:576px) {
-//   .registration-wrap {
-  
-//     &-main {
-//       height: 100vh;
-//       height: calc((var(--vh, 1vh) * 100) - var(--header) - var(--footer) - 80px);
-//       overflow-y: auto;
-//        @media(max-width:576px) {
-//       height: calc((var(--vh, 1vh) * 100) - var(--header) - var(--footer) - 120px);
-              
-//           }
-//     }
-//   }
-//   .registration-wrap-fixed {
-//     position: fixed;
-//     width: 100%;
-//     bottom: 0;
-//     left: 0;
-//     background: #fff;
-//     padding-left: $paddingContainer;
-//     padding-right: $paddingContainer;
-//   }
-//   .registration-container {
-//       max-width: 460px;
-//       margin: 0 auto;
-//       padding: 40px 0px;
-     
-//   }
-//   .registration-form {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-   
-//   }
-//     }
+
+
+.textpage {
+  height: auto;
+}
