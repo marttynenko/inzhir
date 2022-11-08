@@ -38,7 +38,7 @@ $(document).ready(function () {
               },
               date: {
                required: true,
-               date: true,
+               adt: true,
               },
               city: {
                required: true,
@@ -83,7 +83,7 @@ $(document).ready(function () {
             },
             date: {
                required: "Введите дату",
-               date: "Введите корректную дату",
+               adt: "Введите корректную дату",
             },
             city: {
                required: "Введите вашу страну",
@@ -111,6 +111,7 @@ $(document).ready(function () {
                required: 'Введите код'
             }
          },
+
         });
         jQuery.validator.addMethod(
             "lettersonly",
@@ -131,6 +132,33 @@ $(document).ready(function () {
             "Incorrect format"
           );
 
+          $.validator.methods.adt = function(value, element) {
+            var min = $(element).data('min-date-adt');
+            var max = $(element).data('max-date-adt');
+       
+            var minDate = toDate(min);
+            var maxDate = toDate(max);
+       
+           console.log(minDate);
+           console.log(maxDate);
+       
+           var check = $(element).val();
+           console.log(check);
+           var checkDate = toDate(check);
+           console.log(checkDate);
+           
+           function toDate(datestr) {
+               var from = datestr.split(".");
+               return new Date(from[2], from[1] - 1, from[0]);
+           }
+           
+           var result = checkDate > minDate && checkDate < maxDate;
+           console.log(result);
+           return result;
+       };
+      
+       
+
 
 
    let documentInput = document.getElementById('document');
@@ -138,11 +166,20 @@ $(document).ready(function () {
     if(documentInput) {
       var element = document.getElementById('date');
       var maskOptions = {
-         placeholder: '00-00-0000',
-         mask: '00-00-0000'
+         placeholder: '00.00.0000',
+         mask: '00.00.0000'
       };
       var mask = IMask(element, maskOptions);
     }
+
+   //  var dateMask = IMask(
+   //    document.getElementById('date'),
+   //    {
+   //      mask: Date,
+   //      min: new Date(1900, 0, 1),
+   //      max: new Date(2100, 0, 1),
+   //      lazy: false
+   //    });
   
 
 // Disables button
@@ -159,6 +196,7 @@ $(document).ready(function () {
 
 
 
+console.log('zxc')
 
 const mask = (selector) => {
     function setMask() {
