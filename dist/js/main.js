@@ -205,7 +205,7 @@ $( document ).ready(function() {
        // opened: true,
        closeOnDateSelect:true,
        lang: 'ru',
-       yearStart: 1940,
+       yearStart: 1900,
        yearEnd: new Date().getFullYear(),
        dayOfWeekStart: 1,
 
