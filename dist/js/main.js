@@ -139,13 +139,9 @@ $(document).ready(function () {
             var minDate = toDate(min);
             var maxDate = toDate(max);
        
-           console.log(minDate);
-           console.log(maxDate);
        
            var check = $(element).val();
-           console.log(check);
            var checkDate = toDate(check);
-           console.log(checkDate);
            
            function toDate(datestr) {
                var from = datestr.split(".");
@@ -153,7 +149,6 @@ $(document).ready(function () {
            }
            
            var result = checkDate > minDate && checkDate < maxDate;
-           console.log(result);
            return result;
        };
       
@@ -172,31 +167,52 @@ $(document).ready(function () {
       var mask = IMask(element, maskOptions);
     }
 
-   //  var dateMask = IMask(
-   //    document.getElementById('date'),
-   //    {
-   //      mask: Date,
-   //      min: new Date(1900, 0, 1),
-   //      max: new Date(2100, 0, 1),
-   //      lazy: false
-   //    });
   
 
 // Disables button
-   $('#registration-form input').bind('keyup blur click', function () { 
+$('#registration-form input').not('[readonly]').bind('keyup blur click change', function () { 
       if ($('#registration-form').validate().checkForm()) {                   
          $('#submit').removeClass('btn-disabled').prop('disabled', false); 
       } else {
          $('#submit').addClass('btn-disabled').prop('disabled', true);   
       }
- });
+});
+
+ $('#registration-form textarea').bind('keyup blur click change', function () { 
+   if ($('#registration-form').validate().checkForm()) {                   
+      $('#submit').removeClass('btn-disabled').prop('disabled', false); 
+   } else {
+      $('#submit').addClass('btn-disabled').prop('disabled', true);   
+   }
+});
 
     
 });
 
 
 
-console.log('zxc')
+
+
+
+
+
+$( document ).ready(function() {
+
+     $('#date').datetimepicker({
+       // value:'12.03.2013',
+       format:'d.m.Y',
+       timepicker: false,
+       // opened: true,
+       closeOnDateSelect:true,
+       lang: 'ru',
+       yearStart: 1940,
+       yearEnd: new Date().getFullYear(),
+       dayOfWeekStart: 1,
+
+     });
+
+     $.datetimepicker.setLocale('ru');
+ });
 
 const mask = (selector) => {
     function setMask() {
