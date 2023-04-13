@@ -1,4 +1,23 @@
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+
+
+
+
+
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 $(document).ready(function () {
+
+
     // Валидация формы
        let formvalidate =  $("#registration-form").validate({
          //   validateOnKeyPress: true,
@@ -21,7 +40,7 @@ $(document).ready(function () {
               },
               date: {
                required: true,
-               date: true,
+               adt: true,
               },
               city: {
                required: true,
@@ -50,10 +69,9 @@ $(document).ready(function () {
               },
               sms: {
                required: true,
-               // number: true,
               }
-    
-    
+
+
            },
            messages: {
 
@@ -66,8 +84,8 @@ $(document).ready(function () {
                lettersonly: "Введите корректную фамилию",
             },
             date: {
-               required: "Введите свою фамилию",
-               date: "zxczxc",
+               required: "Введите дату",
+               adt: "Введите корректную дату",
             },
             city: {
                required: "Введите вашу страну",
@@ -83,44 +101,19 @@ $(document).ready(function () {
                required: "Введите дополнительные данные",
             },
             checkbox: {
-               required: 'Примити соглашение',
+               required: 'Обязательное поле',
             },
             checkbox1: {
-               required: 'Примити подтверждение',
+               required: 'Обязательное поле',
             },
             checkbox2: {
-               required: 'Примити подтверждение',
+               required: 'Обязательное поле',
             },
             sms: {
                required: 'Введите код'
             }
-            // text: {
-            //    required: "asdasd",
-            // },
+         },
 
-    
-           },
-         //   onComplete: function (form,event) {
-         //       console.log('asd')
-         //    },
-         //   submitHandler: function(form) { 
-         //    $(form).change(function() {
-         //       console.log('asd')
-         //    })
-         //       //  if ($("#registration-form").valid()) {
-         //       //    $("#submit").addClass("next");
-         //       // } else {
-         //       //       $("#submit").removeClass("next");
-         //       // }
-            
-              
-         // }, 
-         // invalidHandler: function (form, validator) {
-
-         //    form.change(function() {
-         //       console.log('asd')
-         //    })
-         //  },
         });
         jQuery.validator.addMethod(
             "lettersonly",
@@ -129,7 +122,7 @@ $(document).ready(function () {
             },
             "Incorrect format"
           );
-          
+
         jQuery.validator.addMethod(
             "telephone",
             function (value, element) {
@@ -141,74 +134,84 @@ $(document).ready(function () {
             "Incorrect format"
           );
 
+          $.validator.methods.adt = function(value, element) {
+            var min = $(element).data('min-date-adt');
+            var max = $(element).data('max-date-adt');
+       
+            var minDate = toDate(min);
+            var maxDate = toDate(max);
+       
+       
+           var check = $(element).val();
+           var checkDate = toDate(check);
+           
+           function toDate(datestr) {
+               var from = datestr.split(".");
+               return new Date(from[2], from[1] - 1, from[0]);
+           }
+           
+           var result = checkDate > minDate && checkDate < maxDate;
+           return result;
+       };
+      
+       
+
 
 
    let documentInput = document.getElementById('document');
-   let phoneInput = document.getElementById('phone');     
     // Маска для даты
     if(documentInput) {
       var element = document.getElementById('date');
       var maskOptions = {
-         placeholder: '00-00-0000',
-         mask: '00-00-0000'
+         placeholder: '00.00.0000',
+         mask: '00.00.0000'
       };
       var mask = IMask(element, maskOptions);
     }
-         
-    // Маска для телеофона
-    if(phoneInput) {
-      var phone = document.getElementById('phone');
-      var maskOptions = {
-         placeholder: '+{7}(000)000-00-00',
-         mask: '+{7}(000)000-00-00'
-      };
-      var mask = IMask(phone, maskOptions); 
-    }      
-   // проверка 
-   // (function() {
-   //    let emptyInput = false;
-   //    let emptyTextarea = false;
-   //    let emptyCheckbox = false;
-    
-   //    $('form').on('keyup change', function() {
-   //      $('form * input').each(function() {
-   //        if($(this).val() == '') {
-   //          emptyInput = true;
-   //        }
-   //      });
-    
-   //      $('form * textarea').each(function() {
-   //        if($(this).val() == '') {
-   //          emptyTextarea = true;
-   //        }
-   //      });
-    
-   //      console.log(emptyTextarea)
-    
-   //      $('form * input[type="checkbox"]').each(function() {
-   //        if($(this).val() == "true") {
-   //          emptyCheckbox = true;
-   //        } else {
-   //          emptyCheckbox = false
-   //        }
-   //      });
-   //    //   console.log(emptyCheckbox)
-    
-   //      // if(!emptyInput && !emptyTextarea) {
-   //      //   $('#register').removeClass('btn-disabled');
-   //      //   $('#register').removeAttr('disabled');
-   //      // } else {
-   //      //   $('#register').addClass('btn-disabled');
-   //      //   $('#register').attr('disabled', 'disabled');
-   //      // }
-   //    });
-   //  })();
-  
-     
 
   
-      
+
+// Disables button
+$('#registration-form input').not('[readonly]').bind('keyup blur click change', function () { 
+      if ($('#registration-form').validate().checkForm()) {                   
+         $('#submit').removeClass('btn-disabled').prop('disabled', false); 
+      } else {
+         $('#submit').addClass('btn-disabled').prop('disabled', true);   
+      }
 });
+
+ $('#registration-form textarea').bind('keyup blur click change', function () { 
+   if ($('#registration-form').validate().checkForm()) {                   
+      $('#submit').removeClass('btn-disabled').prop('disabled', false); 
+   } else {
+      $('#submit').addClass('btn-disabled').prop('disabled', true);   
+   }
+});
+
     
+});
 
 
+
+
+
+
+
+
+$( document ).ready(function() {
+
+     $('#date').datetimepicker({
+       // value:'12.03.2013',
+       format:'d.m.Y',
+       timepicker: false,
+       // opened: true,
+       closeOnDateSelect:true,
+       lang: 'ru',
+       yearStart: 1900,
+       yearEnd: new Date().getFullYear(),
+       dayOfWeekStart: 1,
+
+     });
+
+     $.datetimepicker.setLocale('ru');
+ });

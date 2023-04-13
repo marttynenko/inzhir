@@ -3,26 +3,39 @@
     <div class="container">
     <div id="app">{{ message }}</div>
      
-          <div class="registration">
-            <div class="registration-title">Введите телефон</div>
-            <div class="registration-text">Введите ваш актуальный номер телефона, на него придет SMS-сообщение для верификации.</div>
-            <form id="registration-form">
-             
-               
-                  <div class="ui-field ui-mb-40">
-                    <input type="text" name="phone" id="phone" class="ui-field-input" placeholder="+">
-                  </div>
-                      
-             
-              <div class="registration-footer">
-                <button type="submit" class="registration-btn">
-                  Дальше
-                </button>
-  
+
+      <div class="registration">
+        <form id="registration-form" class="registration-form">
+          <div class="registration-wrap">
+            <div class="registration-wrap-header">
+              <div class="registration-title">Введите телефон</div>
+              <div class="registration-text">Введите ваш актуальный номер телефона, на него придет SMS-сообщение для верификации.</div>
+           </div>
+            <div class="registration-wrap-main">
+           
+              <div class="ui-field ui-mb-40">
+                <input type="text" name="phone" id="phone" class="ui-field-input mask-phone" placeholder="+">
               </div>
-            </form>
+
+            </div>
+           
           </div>
-      
+             
+          <div class="registration-wrap-fixed">
+            <div class="registration-container">
+              <div class="registration-footer">
+
+                <button type="submit" class="registration-btn btn-disabled" id="submit" disabled>Дальше</button>
+
+
+
+              </div>
+            </div>
+            
+          </div>      
+        
+      </div>
+         
        
      
     </div>
