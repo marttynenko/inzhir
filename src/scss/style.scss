@@ -34,7 +34,7 @@ body {
   font-weight: 400;
   font-size: rem(16px);
   line-height: 1.42;
-  color: #000;
+  color: 101010;
   background-color: #fff;
 }
 
@@ -59,17 +59,17 @@ body {
   -webkit-box-flex: 0;
 }
 
-// .wrapper {
-//   // height: 100vh; 
-//   height: calc(var(--vh, 1vh) * 100);
-// }
-
 .container {
   margin: 0 auto;
   width: 100%;
   max-width: $widthContainer;
   padding-left: $paddingContainer;
   padding-right: $paddingContainer;
+
+  @media (max-width: 1024px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 
@@ -99,7 +99,6 @@ body {
   }
   span.error {
     display: block;
-    // margin-top: 10px;
     font-size: rem(12px);
     color: #FF4E4E;
     line-height: 23px;
@@ -166,6 +165,8 @@ body {
 
   }
 }
+
+
 .input-eye {
   padding-right: 52px;
 }
@@ -231,8 +232,9 @@ body {
 }
 
 .registration {
-  max-width: 460px;
+  max-width: 328px;
   margin: 0 auto;
+
   &-ty {
     display: flex;
     flex-direction: column;
@@ -246,15 +248,11 @@ body {
   &-title {
     display: block;
     width: 100%;
-    text-align: center;
-      font-weight: 400;
-      font-size: rem(32px);
-      margin-bottom: 40px;
-      color: #000;
-      @media(max-width:400px) {
-        text-align: left;
-          margin-bottom: 30px;
-      }
+    font-weight: 400;
+    font-size: rem(32px);
+    margin-bottom: 24px;
+    color: #000;
+    line-height: 1;
   }
   &-text {
     margin-bottom: 24px;
@@ -362,38 +360,6 @@ body {
 .ui-mb-40 {
   margin-bottom: 40px;
 }
-//  @media(max-height: 500px) {
-//       .registration {
-//         background-color: red;
-//       }
-//     }
- @media(min-width: 1024px) {
-  .registration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    height:  calc(var(--vh, 1vh) * 100);
-    padding: 40px 0px;
-  }
-}
-
-.registration-form {
-  width: 100%;
-}
- @media(max-width:1024px) {
-  .registration {
-    padding: 40px 0px;
-  }
-        .registration-form {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 40px;
-          min-height: calc(100vh - 80px);
-          min-height:  calc((var(--vh, 1vh) * 100) - 80px);
-        }
-    }
 
 
 .textpage {
@@ -402,4 +368,88 @@ body {
 
 #date {
   font-size: 16px;
+}
+
+
+@media (max-width: 1024px) {
+  .registration-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: calc(100vh - 216px);
+    min-height: calc(var(--vh,1vh)*100 - 216px);
+  }
+}
+
+
+
+/* from 13.04.23 */
+.registration {
+  padding-bottom: 32px;
+}
+.registration-form {
+  margin-top: 24px;
+}
+.page-panel {
+  margin-bottom: 24px;
+  padding-bottom: 160px;
+  position: relative;
+
+  &-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &-logo {
+    position: absolute;
+    right: 26px;
+    bottom: 59px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 35px;
+    background: linear-gradient(90deg, #E64A70 0%, #B44AE6 102.15%);
+    border-radius: 0px 0px 24px 24px;
+    z-index: -1;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    right: 10px;
+    bottom: 35px;
+    background-color: #000;
+    border-radius: 0px 0px 24px 24px;
+    transform: rotate(6deg);
+    z-index: -2;
+  }
+}
+.payment-fields {
+  padding-bottom: 36px;
+}
+select.ui-field-input {
+  text-overflow: ellipsis;
+  padding-right: 36px;
+  font-size: 16px;
+  background: #FFF url(../images/select.svg) right top no-repeat;
+  appearance: none;
+}
+.registration-subtitle {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 12px;
 }

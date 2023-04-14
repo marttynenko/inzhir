@@ -215,3 +215,17 @@ $( document ).ready(function() {
 
      $.datetimepicker.setLocale('ru');
  });
+
+
+
+ jQuery.extend(jQuery.validator.messages, {
+   required: "Обязательное поле",
+   email: "Некорректный email адрес",
+   url: "Некорректный URL",
+   number: "Некорректный номер",
+   digits: "Это поле поддерживает только числа",
+   equalTo: "Поля не совпадают",
+   maxlength: jQuery.validator.format('Максимальная длина поля {0} символа(ов)'),
+   minlength: jQuery.validator.format('Минимальная длина поля {0} символа(ов)'),
+   require_from_group: jQuery.validator.format('Отметьте миниммум {0} из этих полей')
+ });

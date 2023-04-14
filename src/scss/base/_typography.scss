@@ -28,38 +28,38 @@ h5,
   font-family: $baseFont;
   color: #000;
   text-transform: none;
-  line-height: 1.42;
-  font-weight: 700;
+  line-height: 1.15;
+  font-weight: 400;
   margin-bottom: 20px;
 }
 
 h1,
 .h1 {
-  font-size: rem(40px);
+  font-size: rem(40);
 }
 
 h2,
 .h2 {
   margin-top: 30px;
-  font-size: rem(32px);
+  font-size: 32px;
 }
 
 h3,
 .h3 {
   margin-top: 30px;
-  font-size: rem(22px);
+  font-size: 22px;
 }
 
 h4,
 .h4 {
   margin-top: 30px;
-  font-size: rem(18px);
+  font-size: 18px;
 }
 
 h5,
 .h5 {
   margin-top: 30px;
-  font-size: rem(16px);
+  font-size: 16px;
 }
 
 a {
